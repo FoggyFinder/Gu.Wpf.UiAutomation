@@ -289,6 +289,12 @@
         public VerticalScrollBar FindVerticalScrollBar(string name = null) => this.Find(ControlType.ScrollBar, name).AsVerticalScrollBar();
 
         /// <summary>
+        /// Find the first items control by x:Name, or AutomationID
+        /// </summary>
+        /// <param name="name">x:Name, Content or AutomationID</param>
+        public ItemsControl FindItemsControl(string name = null) => this.Find(ControlType.List, name).AsItemsControl();
+
+        /// <summary>
         /// Find the first list box by x:Name, Header or AutomationID
         /// </summary>
         /// <param name="name">x:Name, Content or AutomationID</param>
@@ -614,6 +620,8 @@
         public GroupBox AsGroupBox() => new GroupBox(this.BasicAutomationElement);
 
         public Expander AsExpander() => new Expander(this.BasicAutomationElement);
+
+        public ItemsControl AsItemsControl() => new ItemsControl(this.BasicAutomationElement);
 
         public GridRow AsGridRow() => new GridRow(this.BasicAutomationElement);
 

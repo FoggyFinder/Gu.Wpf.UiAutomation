@@ -54,6 +54,7 @@
     <Compile Include="Elements\DataGridTests.cs" />
     <Compile Include="Elements\ExpanderTests.cs" />
     <Compile Include="Elements\GroupBoxTests.cs" />
+    <Compile Include="Elements\ItemsControlTests.cs" />
     <Compile Include="Elements\LabelTests.cs" />
     <Compile Include="Elements\ListBoxTests.cs" />
     <Compile Include="Elements\ListViewTests.cs" />

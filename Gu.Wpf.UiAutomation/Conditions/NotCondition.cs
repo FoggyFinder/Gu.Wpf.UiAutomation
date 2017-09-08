@@ -2,14 +2,14 @@
 {
     using Interop.UIAutomationClient;
 
-    public class NotCondition : ConditionBase
+    public class NotCondition : Condition
     {
-        public NotCondition(ConditionBase condition)
+        public NotCondition(Condition condition)
         {
             this.Condition = condition;
         }
 
-        public ConditionBase Condition { get; }
+        public Condition Condition { get; }
 
         /// <inheritdoc/>
         public override string ToString()

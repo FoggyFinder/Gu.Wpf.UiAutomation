@@ -11,6 +11,6 @@ namespace Gu.Wpf.UiAutomation
 
         public static FalseCondition Default { get; } = new FalseCondition();
 
-        public override IUIAutomationCondition ToNative(IUIAutomation automation) => automation.CreateTrueCondition();
+        public override IUIAutomationCondition ToNative(IUIAutomation automation) => automation.CreateFalseCondition();
     }
 }

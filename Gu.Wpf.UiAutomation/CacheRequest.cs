@@ -27,7 +27,7 @@
 
         public AutomationElementMode AutomationElementMode { get; set; }
 
-        public ConditionBase TreeFilter { get; set; } = TrueCondition.Default;
+        public Condition TreeFilter { get; set; } = TrueCondition.Default;
 
         public TreeScope TreeScope { get; set; }
 

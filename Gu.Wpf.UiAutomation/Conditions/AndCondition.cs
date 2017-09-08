@@ -4,14 +4,14 @@
     using System.Linq;
     using Interop.UIAutomationClient;
 
-    public class AndCondition : JunctionConditionBase
+    public class AndCondition : JunctionCondition
     {
-        public AndCondition(ConditionBase condition1, ConditionBase condition2)
+        public AndCondition(Condition condition1, Condition condition2)
             : this(new[] { condition1, condition2 })
         {
         }
 
-        public AndCondition(IEnumerable<ConditionBase> conditions)
+        public AndCondition(IEnumerable<Condition> conditions)
         {
             this.Conditions.AddRange(conditions);
         }

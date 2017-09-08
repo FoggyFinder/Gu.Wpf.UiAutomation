@@ -8,6 +8,6 @@
 
         ITreeWalker GetRawViewWalker();
 
-        ITreeWalker GetCustomTreeWalker(ConditionBase condition);
+        ITreeWalker GetCustomTreeWalker(Condition condition);
     }
 }

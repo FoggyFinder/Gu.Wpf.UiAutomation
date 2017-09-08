@@ -3,7 +3,7 @@
     using Gu.Wpf.UiAutomation.UIA3.Converters;
     using Interop.UIAutomationClient;
 
-    public class PropertyCondition : ConditionBase
+    public class PropertyCondition : Condition
     {
         public PropertyCondition(PropertyId property, object value)
             : this(property, value, PropertyConditionFlags.None)

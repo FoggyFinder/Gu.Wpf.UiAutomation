@@ -295,7 +295,7 @@
         /// <summary>
         /// Finds all elements in the given treescope and with the given condition.
         /// </summary>
-        public IReadOnlyList<AutomationElement> FindAll(TreeScope treeScope, ConditionBase condition)
+        public IReadOnlyList<AutomationElement> FindAll(TreeScope treeScope, Condition condition)
         {
             return this.BasicAutomationElement.FindAll(treeScope, condition);
         }
@@ -303,7 +303,7 @@
         /// <summary>
         /// Finds all elements in the given treescope and with the given condition.
         /// </summary>
-        public IReadOnlyList<T> FindAll<T>(TreeScope treeScope, ConditionBase condition, Func<BasicAutomationElementBase, T> wrap)
+        public IReadOnlyList<T> FindAll<T>(TreeScope treeScope, Condition condition, Func<BasicAutomationElementBase, T> wrap)
             where T : AutomationElement
         {
             return this.BasicAutomationElement.FindAll(treeScope, condition, wrap);
@@ -312,7 +312,7 @@
         /// <summary>
         /// Finds all elements in the given treescope and with the given condition within the given timeout.
         /// </summary>
-        public IReadOnlyList<AutomationElement> FindAll(TreeScope treeScope, ConditionBase condition, TimeSpan timeOut)
+        public IReadOnlyList<AutomationElement> FindAll(TreeScope treeScope, Condition condition, TimeSpan timeOut)
         {
             if (this.TryFindAll(treeScope, condition, timeOut, out var result))
             {
@@ -325,7 +325,7 @@
         /// <summary>
         /// Finds all elements in the given treescope and with the given condition within the given timeout.
         /// </summary>
-        public bool TryFindAll(TreeScope treeScope, ConditionBase condition, TimeSpan timeOut, out IReadOnlyList<AutomationElement> result)
+        public bool TryFindAll(TreeScope treeScope, Condition condition, TimeSpan timeOut, out IReadOnlyList<AutomationElement> result)
         {
             result = null;
             var start = DateTime.Now;
@@ -347,7 +347,7 @@
         /// <summary>
         /// Finds the first element which is in the given treescope with the given condition.
         /// </summary>
-        public AutomationElement FindFirst(TreeScope treeScope, ConditionBase condition)
+        public AutomationElement FindFirst(TreeScope treeScope, Condition condition)
         {
             return this.FindFirst(treeScope, condition, Retry.Time);
         }
@@ -355,7 +355,7 @@
         /// <summary>
         /// Finds the first element which is in the given treescope with the given condition.
         /// </summary>
-        public T FindFirst<T>(TreeScope treeScope, ConditionBase condition, Func<BasicAutomationElementBase, T> wrap)
+        public T FindFirst<T>(TreeScope treeScope, Condition condition, Func<BasicAutomationElementBase, T> wrap)
             where T : AutomationElement
         {
             return this.FindFirst(treeScope, condition, wrap, Retry.Time);
@@ -364,7 +364,7 @@
         /// <summary>
         /// Finds the first element which is in the given treescope with the given condition within the given timeout period.
         /// </summary>
-        public AutomationElement FindFirst(TreeScope treeScope, ConditionBase condition, TimeSpan timeOut)
+        public AutomationElement FindFirst(TreeScope treeScope, Condition condition, TimeSpan timeOut)
         {
             if (this.TryFindFirst(treeScope, condition, timeOut, out var result))
             {
@@ -377,7 +377,7 @@
         /// <summary>
         /// Finds the first element which is in the given treescope with the given condition within the given timeout period.
         /// </summary>
-        public bool TryFindFirst(TreeScope treeScope, ConditionBase condition, TimeSpan timeOut, out AutomationElement result)
+        public bool TryFindFirst(TreeScope treeScope, Condition condition, TimeSpan timeOut, out AutomationElement result)
         {
             result = null;
             var start = DateTime.Now;
@@ -398,7 +398,7 @@
         /// <summary>
         /// Finds the first element which is in the given treescope with the given condition within the given timeout period.
         /// </summary>
-        public T FindFirst<T>(TreeScope treeScope, ConditionBase condition, Func<BasicAutomationElementBase, T> wrap, TimeSpan timeOut)
+        public T FindFirst<T>(TreeScope treeScope, Condition condition, Func<BasicAutomationElementBase, T> wrap, TimeSpan timeOut)
             where T : AutomationElement
         {
             if (this.TryFindFirst(treeScope, condition, wrap, timeOut, out var result))
@@ -412,7 +412,7 @@
         /// <summary>
         /// Finds the first element which is in the given treescope with the given condition within the given timeout period.
         /// </summary>
-        public bool TryFindFirst<T>(TreeScope treeScope, ConditionBase condition, Func<BasicAutomationElementBase, T> wrap, TimeSpan timeOut, out T result)
+        public bool TryFindFirst<T>(TreeScope treeScope, Condition condition, Func<BasicAutomationElementBase, T> wrap, TimeSpan timeOut, out T result)
             where T : AutomationElement
         {
             result = null;
@@ -435,7 +435,7 @@
         /// <summary>
         /// Finds the first element which is in the given treescope with the given condition within the given timeout period.
         /// </summary>
-        public AutomationElement FindAt(TreeScope treeScope, ConditionBase condition, int index, TimeSpan timeOut)
+        public AutomationElement FindAt(TreeScope treeScope, Condition condition, int index, TimeSpan timeOut)
         {
             if (this.TryFindAt(treeScope, condition, index, timeOut, out var result))
             {
@@ -448,7 +448,7 @@
         /// <summary>
         /// Finds the first element which is in the given treescope with the given condition within the given timeout period.
         /// </summary>
-        public bool TryFindAt(TreeScope treeScope, ConditionBase condition, int index, TimeSpan timeOut, out AutomationElement result)
+        public bool TryFindAt(TreeScope treeScope, Condition condition, int index, TimeSpan timeOut, out AutomationElement result)
         {
             result = null;
             var start = DateTime.Now;
@@ -469,7 +469,7 @@
         /// <summary>
         /// Finds the first element which is in the given treescope with the given condition within the given timeout period.
         /// </summary>
-        public T FindAt<T>(TreeScope treeScope, ConditionBase condition, int index, Func<BasicAutomationElementBase, T> wrap, TimeSpan timeOut)
+        public T FindAt<T>(TreeScope treeScope, Condition condition, int index, Func<BasicAutomationElementBase, T> wrap, TimeSpan timeOut)
             where T : AutomationElement
         {
             if (this.TryFindAt(treeScope, condition, index, wrap, timeOut, out var result))
@@ -483,7 +483,7 @@
         /// <summary>
         /// Finds the first element which is in the given treescope with the given condition within the given timeout period.
         /// </summary>
-        public bool TryFindAt<T>(TreeScope treeScope, ConditionBase condition, int index, Func<BasicAutomationElementBase, T> wrap, TimeSpan timeOut, out T result)
+        public bool TryFindAt<T>(TreeScope treeScope, Condition condition, int index, Func<BasicAutomationElementBase, T> wrap, TimeSpan timeOut, out T result)
             where T : AutomationElement
         {
             result = null;
@@ -523,12 +523,12 @@
             return this.FindFirst(TreeScope.Children, this.ConditionFactory.ByAutomationId(automationId));
         }
 
-        public AutomationElement FindFirstChild(ConditionBase condition)
+        public AutomationElement FindFirstChild(Condition condition)
         {
             return this.FindFirst(TreeScope.Children, condition);
         }
 
-        public AutomationElement FindFirstChild(Func<ConditionFactory, ConditionBase> newConditionFunc)
+        public AutomationElement FindFirstChild(Func<ConditionFactory, Condition> newConditionFunc)
         {
             var condition = newConditionFunc(this.ConditionFactory);
             return this.FindFirstChild(condition);
@@ -545,24 +545,24 @@
             return this.BasicAutomationElement.FindAll(TreeScope.Children, TrueCondition.Default, wrap);
         }
 
-        public IReadOnlyList<AutomationElement> FindAllChildren(ConditionBase condition)
+        public IReadOnlyList<AutomationElement> FindAllChildren(Condition condition)
         {
             return this.BasicAutomationElement.FindAll(TreeScope.Children, condition);
         }
 
-        public IReadOnlyList<T> FindAllChildren<T>(ConditionBase condition, Func<BasicAutomationElementBase, T> wrap)
+        public IReadOnlyList<T> FindAllChildren<T>(Condition condition, Func<BasicAutomationElementBase, T> wrap)
             where T : AutomationElement
         {
             return this.BasicAutomationElement.FindAll(TreeScope.Children, condition, wrap);
         }
 
-        public IReadOnlyList<AutomationElement> FindAllChildren(Func<ConditionFactory, ConditionBase> newConditionFunc)
+        public IReadOnlyList<AutomationElement> FindAllChildren(Func<ConditionFactory, Condition> newConditionFunc)
         {
             var condition = newConditionFunc(this.ConditionFactory);
             return this.BasicAutomationElement.FindAll(TreeScope.Children, condition);
         }
 
-        public IReadOnlyList<T> FindAllChildren<T>(Func<ConditionFactory, ConditionBase> newConditionFunc, Func<BasicAutomationElementBase, T> wrap)
+        public IReadOnlyList<T> FindAllChildren<T>(Func<ConditionFactory, Condition> newConditionFunc, Func<BasicAutomationElementBase, T> wrap)
             where T : AutomationElement
         {
             var condition = newConditionFunc(this.ConditionFactory);
@@ -602,12 +602,12 @@
             return this.FindFirst(TreeScope.Descendants, this.ConditionFactory.ByControlType(controlType), wrap);
         }
 
-        public AutomationElement FindFirstDescendant(ConditionBase condition)
+        public AutomationElement FindFirstDescendant(Condition condition)
         {
             return this.FindFirst(TreeScope.Descendants, condition);
         }
 
-        public AutomationElement FindFirstDescendant(Func<ConditionFactory, ConditionBase> newConditionFunc)
+        public AutomationElement FindFirstDescendant(Func<ConditionFactory, Condition> newConditionFunc)
         {
             var condition = newConditionFunc(this.ConditionFactory);
             return this.FindFirstDescendant(condition);
@@ -618,24 +618,24 @@
             return this.FindAll(TreeScope.Descendants, TrueCondition.Default);
         }
 
-        public IReadOnlyList<AutomationElement> FindAllDescendants(ConditionBase condition)
+        public IReadOnlyList<AutomationElement> FindAllDescendants(Condition condition)
         {
             return this.FindAll(TreeScope.Descendants, condition);
         }
 
-        public IReadOnlyList<AutomationElement> FindAllDescendants(Func<ConditionFactory, ConditionBase> newConditionFunc)
+        public IReadOnlyList<AutomationElement> FindAllDescendants(Func<ConditionFactory, Condition> newConditionFunc)
         {
             var condition = newConditionFunc(this.ConditionFactory);
             return this.FindAllDescendants(condition);
         }
 
-        public AutomationElement FindFirstNested(Func<ConditionFactory, IList<ConditionBase>> nestedConditionsFunc)
+        public AutomationElement FindFirstNested(Func<ConditionFactory, IList<Condition>> nestedConditionsFunc)
         {
             var conditions = nestedConditionsFunc(this.ConditionFactory);
             return this.FindFirstNested(conditions.ToArray());
         }
 
-        public IReadOnlyList<AutomationElement> FindAllNested(Func<ConditionFactory, IList<ConditionBase>> nestedConditionsFunc)
+        public IReadOnlyList<AutomationElement> FindAllNested(Func<ConditionFactory, IList<Condition>> nestedConditionsFunc)
         {
             var conditions = nestedConditionsFunc(this.ConditionFactory);
             return this.FindAllNested(conditions.ToArray());
@@ -644,7 +644,7 @@
         /// <summary>
         /// Finds the first element by looping thru all conditions.
         /// </summary>
-        public AutomationElement FindFirstNested(params ConditionBase[] nestedConditions)
+        public AutomationElement FindFirstNested(params Condition[] nestedConditions)
         {
             var currentElement = this;
             foreach (var condition in nestedConditions)
@@ -662,7 +662,7 @@
         /// <summary>
         /// Finds all elements by looping thru all conditions.
         /// </summary>
-        public IReadOnlyList<AutomationElement> FindAllNested(params ConditionBase[] nestedConditions)
+        public IReadOnlyList<AutomationElement> FindAllNested(params Condition[] nestedConditions)
         {
             var currentElement = this;
             for (var i = 0; i < nestedConditions.Length - 1; i++)
@@ -705,28 +705,24 @@
             return itemList.ToArray();
         }
 
-        public ConditionBase CreateCondition(ControlType controlType, string name)
+        public Condition CreateCondition(ControlType controlType, string name)
         {
             if (name == null)
             {
                 return this.CreateCondition(controlType);
             }
 
-            return new AndCondition(
-                this.CreateCondition(controlType),
-                this.CreateNameOrIdCondition(name));
+            return this.ConditionFactory.ByTypeNameOrId(controlType, name);
         }
 
-        public PropertyCondition CreateCondition(ControlType controlType)
+        public Condition CreateCondition(ControlType controlType)
         {
             return this.ConditionFactory.ByControlType(controlType);
         }
 
-        public OrCondition CreateNameOrIdCondition(string key)
+        public Condition CreateNameOrIdCondition(string key)
         {
-            return new OrCondition(
-                this.ConditionFactory.ByName(key),
-                this.ConditionFactory.ByAutomationId(key));
+            return this.ConditionFactory.ByNameOrId(key);
         }
     }
 }

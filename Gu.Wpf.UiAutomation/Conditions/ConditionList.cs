@@ -2,9 +2,9 @@
 {
     using System.Collections.Generic;
 
-    public class ConditionList : List<ConditionBase>
+    public class ConditionList : List<Condition>
     {
-        public ConditionList(params ConditionBase[] conditions)
+        public ConditionList(params Condition[] conditions)
         {
             this.AddRange(conditions);
         }

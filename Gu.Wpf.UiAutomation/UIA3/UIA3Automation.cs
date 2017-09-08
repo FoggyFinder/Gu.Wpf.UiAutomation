@@ -35,9 +35,12 @@
             }
 
             this.TreeWalkerFactory = new UIA3TreeWalkerFactory(this);
+            this.ConditionFactory = new CachingConditionFactory(this.PropertyLibrary, this.NativeAutomation);
         }
 
         public override ITreeWalkerFactory TreeWalkerFactory { get; }
+
+        public override ConditionFactory ConditionFactory { get; }
 
         public override object NotSupportedValue => this.NativeAutomation.ReservedNotSupportedValue;
 

@@ -5,7 +5,7 @@
 
     public class TreeView : Control
     {
-        private readonly ConditionBase treeViewItemCondition;
+        private readonly Condition treeViewItemCondition;
 
         public TreeView(BasicAutomationElementBase basicAutomationElement)
             : base(basicAutomationElement)

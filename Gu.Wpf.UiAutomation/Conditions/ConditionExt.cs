@@ -3,57 +3,60 @@
     using System.Collections.Generic;
     using Interop.UIAutomationClient;
 
-    /// <summary>
-    /// Base class for the conditions
-    /// </summary>
-    public abstract class ConditionBase
+    public static class ConditionExt
     {
-        public abstract Interop.UIAutomationClient.IUIAutomationCondition ToNative(IUIAutomation automation);
-
         /// <summary>
         /// Adds the given condition with an "and"
         /// </summary>
-        public AndCondition And(ConditionBase newCondition)
+        public static AndCondition And(this Condition self, Condition newCondition)
         {
             // Check if this condition is already an and condition
-            if (this is AndCondition thisCondition)
+            if (self is AndCondition thisCondition)
             {
                 // If so, just add the new one
-                var newConditions = new List<ConditionBase>(thisCondition.ChildCount + 1);
+                var newConditions = new List<Condition>(thisCondition.ChildCount + 1);
                 newConditions.AddRange(thisCondition.Conditions);
                 newConditions.Add(newCondition);
                 return new AndCondition(newConditions);
             }
 
             // It is not, so pack it into an and condition
-            return new AndCondition(this, newCondition);
+            return new AndCondition(self, newCondition);
         }
 
         /// <summary>
         /// Adds the given condition with an "or"
         /// </summary>
-        public OrCondition Or(ConditionBase newCondition)
+        public static OrCondition Or(this Condition self, Condition newCondition)
         {
             // Check if this condition is already an or condition
-            if (this is OrCondition thisCondition)
+            if (self is OrCondition thisCondition)
             {
                 // If so, just add the new one
-                var newConditions = new List<ConditionBase>(thisCondition.ChildCount + 1);
+                var newConditions = new List<Condition>(thisCondition.ChildCount + 1);
                 newConditions.AddRange(thisCondition.Conditions);
                 newConditions.Add(newCondition);
                 return new OrCondition(newConditions);
             }
 
             // It is not, so pack it into an or condition
-            return new OrCondition(this, newCondition);
+            return new OrCondition(self, newCondition);
         }
 
         /// <summary>
         /// Packs this condition into a not condition
         /// </summary>
-        public NotCondition Not()
+        public static NotCondition Not(this Condition self)
         {
-            return new NotCondition(this);
+            return new NotCondition(self);
+        }
+
+        /// <summary>
+        /// Packs this condition into a not condition
+        /// </summary>
+        public static CachedCondition AsCached(this Condition self, IUIAutomation automation)
+        {
+            return new CachedCondition(self, automation);
         }
     }
 }

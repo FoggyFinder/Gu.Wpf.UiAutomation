@@ -166,19 +166,19 @@
 
         public abstract void SetFocus();
 
-        public abstract IReadOnlyList<AutomationElement> FindAll(TreeScope treeScope, ConditionBase condition);
+        public abstract IReadOnlyList<AutomationElement> FindAll(TreeScope treeScope, Condition condition);
 
-        public abstract IReadOnlyList<T> FindAll<T>(TreeScope treeScope, ConditionBase condition, Func<BasicAutomationElementBase, T> wrap)
+        public abstract IReadOnlyList<T> FindAll<T>(TreeScope treeScope, Condition condition, Func<BasicAutomationElementBase, T> wrap)
             where T : AutomationElement;
 
-        public abstract AutomationElement FindFirst(TreeScope treeScope, ConditionBase condition);
+        public abstract AutomationElement FindFirst(TreeScope treeScope, Condition condition);
 
-        public abstract T FindFirst<T>(TreeScope treeScope, ConditionBase condition, Func<BasicAutomationElementBase, T> wrap)
+        public abstract T FindFirst<T>(TreeScope treeScope, Condition condition, Func<BasicAutomationElementBase, T> wrap)
             where T : AutomationElement;
 
-        public abstract AutomationElement FindIndexed(TreeScope treeScope, ConditionBase condition, int index);
+        public abstract AutomationElement FindIndexed(TreeScope treeScope, Condition condition, int index);
 
-        public abstract T FindIndexed<T>(TreeScope treeScope, ConditionBase condition, int index, Func<BasicAutomationElementBase, T> wrap)
+        public abstract T FindIndexed<T>(TreeScope treeScope, Condition condition, int index, Func<BasicAutomationElementBase, T> wrap)
             where T : AutomationElement;
 
         public abstract bool TryGetClickablePoint(out Point point);

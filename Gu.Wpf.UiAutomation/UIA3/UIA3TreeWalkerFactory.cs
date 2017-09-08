@@ -27,7 +27,7 @@
             return new UIA3TreeWalker(this.automation, nativeTreeWalker);
         }
 
-        public ITreeWalker GetCustomTreeWalker(ConditionBase condition)
+        public ITreeWalker GetCustomTreeWalker(Condition condition)
         {
             var nativeCondition = condition.ToNative(this.automation.NativeAutomation);
             var nativeTreeWalker = this.automation.NativeAutomation.CreateTreeWalker(nativeCondition);

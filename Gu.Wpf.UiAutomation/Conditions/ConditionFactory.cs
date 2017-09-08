@@ -5,51 +5,65 @@
     /// </summary>
     public class ConditionFactory
     {
-        private readonly IPropertyLibray propertyLibrary;
-
         public ConditionFactory(IPropertyLibray propertyLibrary)
         {
-            this.propertyLibrary = propertyLibrary;
+            this.PropertyLibrary = propertyLibrary;
         }
 
-        public PropertyCondition ByAutomationId(string automationId)
+        public IPropertyLibray PropertyLibrary { get; }
+
+        public virtual Condition ByAutomationId(string automationId)
         {
-            return new PropertyCondition(this.propertyLibrary.Element.AutomationId, automationId);
+            return new PropertyCondition(this.PropertyLibrary.Element.AutomationId, automationId);
         }
 
-        public PropertyCondition ByControlType(ControlType controlType)
+        public virtual Condition ByControlType(ControlType controlType)
         {
-            return new PropertyCondition(this.propertyLibrary.Element.ControlType, controlType);
+            return new PropertyCondition(this.PropertyLibrary.Element.ControlType, controlType);
         }
 
-        public PropertyCondition ByClassName(string className)
+        public virtual Condition ByClassName(string className)
         {
-            return new PropertyCondition(this.propertyLibrary.Element.ClassName, className);
+            return new PropertyCondition(this.PropertyLibrary.Element.ClassName, className);
         }
 
-        public PropertyCondition ByName(string name)
+        public virtual Condition ByName(string name)
         {
-            return new PropertyCondition(this.propertyLibrary.Element.Name, name);
+            return new PropertyCondition(this.PropertyLibrary.Element.Name, name);
         }
 
-        public PropertyCondition ByValue(string text)
+        public virtual Condition ByTypeNameOrId(ControlType controlType, string name)
         {
-            return new PropertyCondition(this.propertyLibrary.Value.Value, text);
+            return new AndCondition(
+                this.ByControlType(controlType),
+                this.ByNameOrId(name));
         }
 
-        public PropertyCondition ByProcessId(int processId)
+        public virtual Condition ByNameOrId(string key)
         {
-            return new PropertyCondition(this.propertyLibrary.Element.ProcessId, processId);
+            return new OrCondition(
+                this.ByName(key),
+                this.ByAutomationId(key));
         }
 
-        public PropertyCondition ByLocalizedControlType(string localizedControlType)
+        public virtual Condition ByValue(string text)
         {
-           return new PropertyCondition(this.propertyLibrary.Element.LocalizedControlType, localizedControlType);
+            return new PropertyCondition(this.PropertyLibrary.Value.Value, text);
         }
 
-        public PropertyCondition ByHelpTextProperty(string helpText)
+        public virtual Condition ByProcessId(int processId)
         {
-           return new PropertyCondition(this.propertyLibrary.Element.HelpText, helpText);
+            return new PropertyCondition(this.PropertyLibrary.Element.ProcessId, processId);
+        }
+
+        public virtual Condition ByLocalizedControlType(string localizedControlType)
+        {
+           return new PropertyCondition(this.PropertyLibrary.Element.LocalizedControlType, localizedControlType);
+        }
+
+        public virtual Condition ByHelpTextProperty(string helpText)
+        {
+           return new PropertyCondition(this.PropertyLibrary.Element.HelpText, helpText);
         }
 
         /// <summary>

@@ -6,7 +6,7 @@
     {
         private readonly SelectionItemAutomationElement selectionItemAutomationElement;
         private readonly ExpandCollapseAutomationElement expandCollapseAutomationElement;
-        private readonly ConditionBase treeViewItemCondition;
+        private readonly Condition treeViewItemCondition;
 
         public TreeViewItem(BasicAutomationElementBase basicAutomationElement)
             : base(basicAutomationElement)

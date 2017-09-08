@@ -16,6 +16,8 @@
     public sealed class Application : IDisposable
     {
         private static readonly List<Process> Launched = new List<Process>();
+        private static readonly UIA3Automation StaticAutomation = new UIA3Automation();
+
         private readonly ProcessReference processReference;
         private readonly object gate = new object();
 
@@ -31,10 +33,9 @@
         {
             this.processReference = process;
             this.IsStoreApp = isStoreApp;
-            this.Automation = new UIA3Automation();
         }
 
-        public UIA3Automation Automation { get; }
+        public UIA3Automation Automation => StaticAutomation;
 
         /// <summary>
         /// Flag to indicate, if the application is a windows store app.
@@ -443,7 +444,6 @@
                 Launched.Remove(this.processReference.Process);
             }
 
-            this.Automation.Dispose();
             this.disposed = true;
         }
 

@@ -7,6 +7,7 @@
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
     using Gu.Wpf.UiAutomation.Overlay;
+    using Gu.Wpf.UiAutomation.UIA3;
     using GdiColor = System.Drawing.Color;
     using WpfColor = System.Windows.Media.Color;
 
@@ -83,7 +84,7 @@
         /// <summary>
         /// Shortcut to the condition factory for the current automation.
         /// </summary>
-        public ConditionFactory ConditionFactory => this.BasicAutomationElement.Automation.ConditionFactory;
+        public ConditionFactory ConditionFactory => this.Automation.ConditionFactory;
 
         /// <summary>
         /// Standard UIA patterns of this element.

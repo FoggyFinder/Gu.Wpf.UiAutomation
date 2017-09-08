@@ -16,7 +16,6 @@
             this.PropertyLibrary = propertyLibrary;
             this.EventLibrary = eventLibrary;
             this.PatternLibrary = patternLibrary;
-            this.ConditionFactory = new ConditionFactory(propertyLibrary);
 
             // Make sure all pattern ids are initialized
             var unused = this.PatternLibrary.AllForCurrentFramework;
@@ -30,7 +29,7 @@
 
         public abstract ITreeWalkerFactory TreeWalkerFactory { get; }
 
-        public ConditionFactory ConditionFactory { get; }
+        public abstract ConditionFactory ConditionFactory { get; }
 
         /// <summary>
         /// Object which represents the "Not Supported" value

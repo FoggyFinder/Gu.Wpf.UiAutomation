@@ -4,19 +4,19 @@
     using System.Linq;
     using Interop.UIAutomationClient;
 
-    public class OrCondition : JunctionConditionBase
+    public class OrCondition : JunctionCondition
     {
-        public OrCondition(ConditionBase condition1, ConditionBase condition2)
+        public OrCondition(Condition condition1, Condition condition2)
             : this(new[] { condition1, condition2 })
         {
         }
 
-        public OrCondition(ConditionBase condition1, ConditionBase condition2, ConditionBase condition3)
+        public OrCondition(Condition condition1, Condition condition2, Condition condition3)
             : this(new[] { condition1, condition2, condition3 })
         {
         }
 
-        public OrCondition(IEnumerable<ConditionBase> conditions)
+        public OrCondition(IEnumerable<Condition> conditions)
         {
             this.Conditions.AddRange(conditions);
         }
